@@ -1,0 +1,76 @@
+WorldState:
+  bool GoldCollected = false
+  bool DoorOpen = false
+  bool Button1Pressed = false
+  bool Button2Pressed = false
+
+AgentState:
+  string Location = "Spawn" // agent's current location
+
+Goal: (WorldState::GoldCollected == true)
+
+Task: CollectGold
+	Preconditions:
+    AgentState::Location == "TreasureChest"
+  Operator:
+    CollectGoldOperator()
+  Effects:
+    WorldState::GoldCollected = true
+
+Task: WalkToChest
+	Preconditions:
+    WorldState::DoorOpen == true
+  Operator:
+    NavigateTo(TreasureChest.position)
+  Effects:
+    AgentState::Location == "TreasureChest"
+
+Task: WaitForDoor
+  Preconditions:
+    AgentState::Location == "Button1" || AgentState::Location == "Button2"
+  Operator:
+    PlayAnimation(Idle)
+  Effects:
+    WorldState::DoorOpen == true
+  
+SingleUseTask: WalkToButton1
+	Preconditions:
+  Operator:
+    NavigateTo(Button1.position)
+  Effects:
+    AgentState::Location == "Button1"
+    WorldState::Button1Pressed == True
+
+SingleUseTask: WalkToButton2
+	Preconditions:
+  Operator:
+    NavigateTo(Button2.position)
+  Effects:
+    AgentState::Location == "Button2"
+    WorldState::Button2Pressed == True
+
+Possiblity 1:
+WorldState::GoldCollected == true
+  CollectGold
+  AgentState::Location == "TreasureChest"
+    WalkToChest
+    WorldState::DoorOpen == true
+      WaitForDoor
+      AgentState::Location == "Button1" || AgentState::Location == "Button2"
+        WalkToButton1
+
+Possiblity 2:
+WorldState::GoldCollected == true
+  CollectGold
+  AgentState::Location == "TreasureChest"
+    WalkToChest
+    WorldState::DoorOpen == true
+      WaitForDoor
+      AgentState::Location == "Button1" || AgentState::Location == "Button2"
+        WalkToButton2
+
+
+
+
+
+
