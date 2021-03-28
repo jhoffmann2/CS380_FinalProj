@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] private PressurePlate pressurePlateScript1;
-    [SerializeField] private PressurePlate pressurePlateScript2;
+    [SerializeField] private PressurePlate pressurePlateScript1 = null;
+    [SerializeField] private PressurePlate pressurePlateScript2 = null;
     private bool doorOpen;
     private Vector3 startPos;
     private Vector3 endPos;

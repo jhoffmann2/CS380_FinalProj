@@ -6,7 +6,7 @@ namespace Planning.Tasks
 {
   [Serializable] public class CollectGoalTask : Task
   {
-    [SerializeField] private Transform treasureChest;
+    [SerializeField] private Transform treasureChest = null;
 
     protected override Func<Blackboard, bool>[] GetPreConditions()
     {

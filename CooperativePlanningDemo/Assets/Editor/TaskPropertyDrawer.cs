@@ -24,7 +24,7 @@ public class TaskEditor : PropertyDrawer
     typenames = new string[types.Length];
     for (int i = 0; i < types.Length; ++i)
     {
-      typenames[i] = types[i].ToString().Split('.').Last();
+      typenames[i] = types[i].ToString();//.Split('.').Last();
     }
   }
 
