@@ -18,7 +18,15 @@ public class TestNavAgent : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                agent.SetDestination(hit.point);
+                NavMeshPath path = new NavMeshPath();
+                if(agent.CalculatePath(hit.point, path))
+                {
+                    if(path.status == NavMeshPathStatus.PathComplete)
+                        Debug.Log("Vaild Path");
+                    else
+                        Debug.Log("No Path");
+                    
+                }
             }
         }
     } 

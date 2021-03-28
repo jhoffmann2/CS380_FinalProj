@@ -18,11 +18,13 @@ namespace Planning.Operations
     {
       Debug.Log("Waiting For Path");
       navMeshAgent = agent.GetComponent<NavMeshAgent>();
+      path = new NavMeshPath();
       navMeshAgent.CalculatePath(goal, path);
     }
 
     public void Update(GoapAgent agent)
     {
+      navMeshAgent.CalculatePath(goal, path);
     }
 
     public void Exit(GoapAgent agent)
@@ -32,7 +34,7 @@ namespace Planning.Operations
 
     public bool IsComplete(GoapAgent agent)
     {
-      return navMeshAgent.hasPath;
+      return path.status == NavMeshPathStatus.PathComplete;
     }
   }
 }
