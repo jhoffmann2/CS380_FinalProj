@@ -6,8 +6,8 @@ using UnityEngine;
 public class PressurePlate : MonoBehaviour
 {
     public bool depressed;
-    [SerializeField] private Collider agent1Collider;
-    [SerializeField] private Collider agent2Collider;
+    [SerializeField] private Collider agent1Collider = null;
+    [SerializeField] private Collider agent2Collider = null;
     void Start()
     {
         depressed = false;

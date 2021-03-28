@@ -6,7 +6,7 @@ namespace Planning.Tasks
 {
   [Serializable] public class WalkToGoalTask : Task
   {
-    [SerializeField] private Transform chest;
+    [SerializeField] private Transform chest = null;
 
     protected override Func<Blackboard, bool>[] GetPreConditions()
     {

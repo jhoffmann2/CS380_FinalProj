@@ -7,7 +7,7 @@ namespace Planning.Tasks
   [Serializable] public class WaitForDoorTask : Task
   {
     [SerializeField] private Transform[] buttons = new Transform[2];
-    [SerializeField] private Transform goal;
+    [SerializeField] private Transform goal = null;
 
     protected override Func<Blackboard, bool>[] GetPreConditions()
     {

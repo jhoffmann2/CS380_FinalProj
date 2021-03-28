@@ -6,7 +6,7 @@ namespace Planning.Tasks
 {
   [Serializable] public class WalkToButtonTask : Task
   {
-    [SerializeField] private Transform button;
+    [SerializeField] private Transform button = null;
 
     protected override Func<Blackboard, bool>[] GetPreConditions()
     {
