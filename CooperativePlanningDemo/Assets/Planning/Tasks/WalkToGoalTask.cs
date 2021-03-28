@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Planning.Tasks
 {
-  [Serializable] public class WalkToChestTask : Task
+  [Serializable] public class WalkToGoalTask : Task
   {
     [SerializeField] private Transform chest;
 
@@ -18,7 +18,7 @@ namespace Planning.Tasks
 
     protected override IOperation GetOperation()
     {
-      return new NavigateToOperation(chest.position);
+      return new NavMeshToOperation(chest.position);
     }
 
     protected override Action<Blackboard>[] GetEffects()

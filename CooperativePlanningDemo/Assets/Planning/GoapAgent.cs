@@ -17,7 +17,7 @@ namespace Planning
       InitializeBlackboard();
       var goals = new List<Func<Blackboard, bool>>
       {
-        blackboard => blackboard.GetBool("GoldCollected")
+        blackboard => blackboard.GetBool("GoalCollected")
       };
       tasks = GoapPlanner.Plan(goals, state, taskPool);
       if(tasks.Count > 0)
@@ -42,17 +42,6 @@ namespace Planning
       curTask.operation.Update(this);
     }
 
-    private void OnGUI()
-    { 
-      foreach (Type v in ReflectiveEnumerator.DerivedTypes<Task>())
-      {
-        if (GUILayout.Button(v.ToString()))
-        {
-          print(v);
-        }
-      }
-    }
-
     private void InitializeBlackboard()
     {
       state = new Blackboard();
@@ -60,7 +49,7 @@ namespace Planning
       state.SetBool("Button1Presssed", false);
       state.SetBool("Button2Presssed", false);
       state.SetBool("DoorOpen", false);
-      state.SetBool("GoldCollected", false);
+      state.SetBool("GoalCollected", false);
     }
   }
 }

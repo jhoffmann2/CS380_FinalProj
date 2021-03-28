@@ -15,7 +15,7 @@ namespace Planning.Tasks
 
     protected override IOperation GetOperation()
     {
-      return new NavigateToOperation(button.position);
+      return new NavMeshToOperation(button.position);
     }
 
     protected override Action<Blackboard>[] GetEffects()

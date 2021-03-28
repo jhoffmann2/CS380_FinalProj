@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Planning.Tasks
 {
-  [Serializable] public class CollectGoldTask : Task
+  [Serializable] public class CollectGoalTask : Task
   {
     [SerializeField] private Transform treasureChest;
 
@@ -24,14 +24,14 @@ namespace Planning.Tasks
 
     protected override IOperation GetOperation()
     {
-      return new CollectGoldOperation();
+      return new CollectGoalOperation();
     }
 
     protected override Action<Blackboard>[] GetEffects()
     {
       return new Action<Blackboard>[]
       {
-        blackboard => blackboard.SetBool("GoldCollected", true)
+        blackboard => blackboard.SetBool("GoalCollected", true)
       };
     }
   }

@@ -7,32 +7,30 @@ namespace Planning.Operations
 {
     public class NavMeshToOperation : IOperation
     {
-        private GoapAgent goapAgentagent;
         private NavMeshAgent navMeshAgent;
         private Vector3 goal;
         
-        public NavMeshToOperation(GoapAgent agent, Vector3 goal)
+        public NavMeshToOperation(Vector3 goal)
         {
-            this.goapAgentagent = agent;
-            this.navMeshAgent = agent.transform.GetComponent<NavMeshAgent>();
             this.goal = goal;
         }
 
-        public void Init()
+        public void Init(GoapAgent agent)
         {
+            navMeshAgent = agent.transform.GetComponent<NavMeshAgent>();
             navMeshAgent.SetDestination(goal);
         }
 
-        public void Update()
+        public void Update(GoapAgent agent)
         {
 
         }
 
-        public void Exit()
+        public void Exit(GoapAgent agent)
         {
         }
 
-        public bool IsComplete()
+        public bool IsComplete(GoapAgent agent)
         {
             return !navMeshAgent.pathPending && !navMeshAgent.hasPath;
         }

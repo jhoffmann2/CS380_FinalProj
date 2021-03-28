@@ -6,7 +6,8 @@ namespace Planning.Tasks
 {
   [Serializable] public class WaitForDoorTask : Task
   {
-    [SerializeField] private Transform[] buttons;
+    [SerializeField] private Transform[] buttons = new Transform[2];
+    [SerializeField] private Transform goal;
 
     protected override Func<Blackboard, bool>[] GetPreConditions()
     {
@@ -26,7 +27,7 @@ namespace Planning.Tasks
 
     protected override IOperation GetOperation()
     {
-      return new IdleOperation();
+      return new WaitForPathOperation(goal.position);
     }
 
     protected override Action<Blackboard>[] GetEffects()
