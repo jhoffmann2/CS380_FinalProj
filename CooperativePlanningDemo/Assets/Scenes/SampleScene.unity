@@ -369,7 +369,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 360
@@ -395,7 +395,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &71903598
 MonoBehaviour:
@@ -413,9 +413,8 @@ MonoBehaviour:
     tasks:
     - {fileID: 145605168}
     - {fileID: 325725490}
-    - {fileID: 986166188}
+    - {fileID: 1596193327}
     - {fileID: 1714347966}
-    - {fileID: 287075940}
 --- !u!1 &74590883
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,19 +681,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &287075940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c549609ca82041689ac5e3955e946b8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chest: {fileID: 231307240}
 --- !u!114 &325725490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -710,6 +696,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 1159330104}
   - {fileID: 44130019}
+  goal: {fileID: 231307240}
 --- !u!1 &406443789
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,6 +821,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561036902}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &599311505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8ff8e8eadb44ea865368b4322daf5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 1159330104}
 --- !u!1 &621448614
 GameObject:
   m_ObjectHideFlags: 0
@@ -1415,19 +1415,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 964180512}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &986166188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe8ff8e8eadb44ea865368b4322daf5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 1159330104}
 --- !u!1 &995652276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,6 +1523,7 @@ GameObject:
   - component: {fileID: 1064069884}
   - component: {fileID: 1064069889}
   - component: {fileID: 1064069888}
+  - component: {fileID: 1064069891}
   - component: {fileID: 1064069890}
   m_Layer: 0
   m_Name: Capsule (1)
@@ -1671,6 +1659,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1064069891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064069883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e569eaafb15143789ea6fd944f5d0bdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskPool:
+    tasks:
+    - {fileID: 1246189242}
+    - {fileID: 1202800600}
+    - {fileID: 599311505}
+    - {fileID: 1134142091}
+--- !u!114 &1134142091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c549609ca82041689ac5e3955e946b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chest: {fileID: 231307240}
 --- !u!1 &1159330100
 GameObject:
   m_ObjectHideFlags: 0
@@ -1797,6 +1816,35 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1202800600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71e7306a5e21498f8c174b3dccf92031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 1159330104}
+  - {fileID: 44130019}
+  goal: {fileID: 231307240}
+--- !u!114 &1246189242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eef9cfb879e4a5db7c6785b758fb6b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  treasureChest: {fileID: 231307240}
 --- !u!1 &1329332474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,6 +1969,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558353033}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1596193327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c549609ca82041689ac5e3955e946b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chest: {fileID: 231307240}
 --- !u!114 &1714347966
 MonoBehaviour:
   m_ObjectHideFlags: 0
