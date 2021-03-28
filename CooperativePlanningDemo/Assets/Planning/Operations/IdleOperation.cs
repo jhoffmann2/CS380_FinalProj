@@ -4,26 +4,23 @@ namespace Planning.Operations
 {
   public class IdleOperation : IOperation
   {
-    public IdleOperation(GoapAgent agent)
-    {
-    }
 
-    public void Init()
+    public void Init(GoapAgent agent)
     {
       Debug.Log("Waiting For Door");
     }
 
-    public void Update()
+    public void Update(GoapAgent agent)
     {
       
     }
 
-    public void Exit()
+    public void Exit(GoapAgent agent)
     {
       
     }
 
-    public bool IsComplete()
+    public bool IsComplete(GoapAgent agent)
     {
       return true;
     }

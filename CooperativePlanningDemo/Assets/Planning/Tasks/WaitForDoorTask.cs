@@ -4,29 +4,37 @@ using UnityEngine;
 
 namespace Planning.Tasks
 {
-  public class WaitForDoorTask : Task
+  [Serializable] public class WaitForDoorTask : Task
   {
-    static bool AtLocation(Blackboard blackboard, Vector3 pos)
+    [SerializeField] private Transform[] buttons;
+
+    protected override Func<Blackboard, bool>[] GetPreConditions()
     {
-      Vector3 position = (Vector3)blackboard.Get("Location");
-      return Vector3.Distance(pos, position) < 1f;
-    }
-    
-    public WaitForDoorTask(GoapAgent agent, Transform [] buttons) : base(
-      new Func<Blackboard, bool>[]
+      bool AtLocation(Blackboard blackboard, Vector3 pos)
       {
-        blackboard => 
-          AtLocation(blackboard, buttons[0].position) || 
+        Vector3 position = (Vector3)blackboard.Get("Location");
+        return Vector3.Distance(pos, position) < 1f;
+      }
+      
+      return new Func<Blackboard, bool>[]
+      {
+        blackboard =>
+          AtLocation(blackboard, buttons[0].position) ||
           AtLocation(blackboard, buttons[1].position)
-      },
-      new IdleOperation(agent), 
-      new Action<Blackboard>[]
+      };
+    }
+
+    protected override IOperation GetOperation()
+    {
+      return new IdleOperation();
+    }
+
+    protected override Action<Blackboard>[] GetEffects()
+    {
+      return new Action<Blackboard>[]
       {
         blackboard => blackboard.SetBool("DoorOpen", true)
-      }
-    )
-    {
-      
+      };
     }
   }
 }

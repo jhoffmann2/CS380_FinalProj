@@ -4,22 +4,18 @@ namespace Planning.Operations
 {
   public class CollectGoldOperation : IOperation
   {
-    public CollectGoldOperation(GoapAgent agent)
-    {
-    }
-
-    public void Init()
+    public void Init(GoapAgent agent)
     {
       Debug.Log("Collecting Gold");
     }
 
-    public void Update()
+    public void Update(GoapAgent agent)
     {}
 
-    public void Exit()
+    public void Exit(GoapAgent agent)
     {}
 
-    public bool IsComplete()
+    public bool IsComplete(GoapAgent agent)
     {
       return true;
     }

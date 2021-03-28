@@ -4,26 +4,35 @@ using UnityEngine;
 
 namespace Planning.Tasks
 {
-  public class CollectGoldTask : Task
+  [Serializable] public class CollectGoldTask : Task
   {
-    static bool AtLocation(Blackboard blackboard, Vector3 pos)
+    [SerializeField] private Transform treasureChest;
+
+    protected override Func<Blackboard, bool>[] GetPreConditions()
     {
-      Vector3 position = (Vector3)blackboard.Get("Location");
-      return Vector3.Distance(pos, position) < 1f;
-    }
-    
-    public CollectGoldTask(GoapAgent agent, Transform treasureChest) : base(
-      new Func<Blackboard, bool> []
+      bool AtLocation(Blackboard blackboard, Vector3 pos)
+      {
+        Vector3 position = (Vector3)blackboard.Get("Location");
+        return Vector3.Distance(pos, position) < 1f;
+      }
+      
+      return new Func<Blackboard, bool>[]
       {
         blackboard => AtLocation(blackboard, treasureChest.position)
-      },
-      new CollectGoldOperation(agent), 
-      new Action<Blackboard>[]
+      };
+    }
+
+    protected override IOperation GetOperation()
+    {
+      return new CollectGoldOperation();
+    }
+
+    protected override Action<Blackboard>[] GetEffects()
+    {
+      return new Action<Blackboard>[]
       {
         blackboard => blackboard.SetBool("GoldCollected", true)
-      }
-    )
-    {
+      };
     }
   }
 }

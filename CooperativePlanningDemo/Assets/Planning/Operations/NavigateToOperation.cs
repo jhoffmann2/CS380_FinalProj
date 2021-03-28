@@ -6,16 +6,14 @@ namespace Planning.Operations
   {
     private Vector3 goal;
     private Vector3 start;
-    private GoapAgent agent;
     private float t;
 
-    public NavigateToOperation(GoapAgent agent, Vector3 goal)
+    public NavigateToOperation(Vector3 goal)
     {
       this.goal = goal;
-      this.agent = agent;
     }
 
-    public void Init()
+    public void Init(GoapAgent agent)
     {
       Debug.Log("Navigating to: " + goal);
       start = agent.transform.position;
@@ -23,17 +21,17 @@ namespace Planning.Operations
       t = 0;
     }
 
-    public void Update()
+    public void Update(GoapAgent agent)
     {
       agent.transform.position = Vector3.Lerp(start, goal, t);
       t += Time.deltaTime / 2f;
     }
 
-    public void Exit()
+    public void Exit(GoapAgent agent)
     {
     }
 
-    public bool IsComplete()
+    public bool IsComplete(GoapAgent agent)
     {
       return t >= 1f;
     }

@@ -2,28 +2,26 @@
 using System.Collections.Generic;
 using Planning.Tasks;
 using UnityEngine;
+using Utilities;
 
 namespace Planning
 {
   public class GoapAgent : MonoBehaviour
   {
-    [SerializeField] private TaskPool taskPool = null;
-    [SerializeField] private Transform[] buttonTransforms = new Transform[2];
-    [SerializeField] private Transform treasureChest = null;
+    [SerializeField] private TaskPool taskPool = new TaskPool();
     private Blackboard state;
     private Stack<Task> tasks;
 
     private void Start()
     {
       InitializeBlackboard();
-      InitializeTaskPool();
       var goals = new List<Func<Blackboard, bool>>
       {
         blackboard => blackboard.GetBool("GoldCollected")
       };
       tasks = GoapPlanner.Plan(goals, state, taskPool);
       if(tasks.Count > 0)
-        tasks.Peek().operation.Init();
+        tasks.Peek().operation.Init(this);
     }
 
     private void Update()
@@ -32,28 +30,27 @@ namespace Planning
         return;
       
       var curTask = tasks.Peek();
-      if (curTask.operation.IsComplete())
+      if (curTask.operation.IsComplete(this))
       {
-        curTask.operation.Exit();
+        curTask.operation.Exit(this);
         tasks.Pop();
         if(tasks.Count > 0)
-          tasks.Peek().operation.Init();
+          tasks.Peek().operation.Init(this);
         return;
       }
       
-      curTask.operation.Update();
+      curTask.operation.Update(this);
     }
 
-    private void InitializeTaskPool()
-    {
-      taskPool.SetTasks(new Task[]
+    private void OnGUI()
+    { 
+      foreach (Type v in ReflectiveEnumerator.DerivedTypes<Task>())
       {
-        new WalkToButtonTask(this, buttonTransforms[0]), 
-        new WalkToButtonTask(this, buttonTransforms[1]), 
-        new WaitForDoorTask(this, buttonTransforms),
-        new WalkToChestTask(this, treasureChest),
-        new CollectGoldTask(this, treasureChest), 
-      });
+        if (GUILayout.Button(v.ToString()))
+        {
+          print(v);
+        }
+      }
     }
 
     private void InitializeBlackboard()

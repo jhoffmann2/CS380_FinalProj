@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace Planning
 {
-  [CreateAssetMenu(fileName = "GOAP", menuName = "GOAP/TaskPool")]
-  public class TaskPool : ScriptableObject
+  [Serializable] 
+  public class TaskPool
   {
-    private Task[] tasks;
+    [SerializeField] private Task[] tasks;
 
     public void SetTasks(Task[] list)
     {

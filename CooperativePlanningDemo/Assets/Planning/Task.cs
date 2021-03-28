@@ -1,27 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental;
+using UnityEngine;
 
 namespace Planning
 {
-  public class Task
+  public abstract class Task : ScriptableObject
   {
-    public readonly IOperation operation;
+    private IOperation operationCache;
+    public IOperation operation => 
+      operationCache ?? (operationCache = GetOperation());
 
-    public readonly Func<Blackboard,bool>[] preconditions;
-    private readonly Action<Blackboard>[] effects;
-    private readonly int maxUses;
+    private Func<Blackboard,bool>[] preconditionsCache;
+    public Func<Blackboard, bool>[] preconditions => 
+      preconditionsCache ?? (preconditionsCache = GetPreConditions());
+
+    private Action<Blackboard>[] effectsCache;
+    private Action<Blackboard>[] effects => 
+      effectsCache ?? (effectsCache = GetEffects());
+
+    private int maxUses => GetMaxUses();
     private int currentUses = 0;
 
-    public Task(
-      Func<Blackboard,bool>[] preconditions, 
-      IOperation operation, 
-      Action<Blackboard>[] effects, 
-      int maxUses = 0)
+    protected abstract Func<Blackboard, bool>[] GetPreConditions();
+    protected abstract IOperation GetOperation();
+    protected abstract Action<Blackboard>[] GetEffects();
+
+    protected virtual int GetMaxUses()
     {
-      this.preconditions = preconditions;
-      this.operation = operation;
-      this.effects = effects;
-      this.maxUses = maxUses;
+      return 0;
     }
 
     public bool CanUse()

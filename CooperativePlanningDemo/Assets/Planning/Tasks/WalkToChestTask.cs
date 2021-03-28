@@ -4,20 +4,29 @@ using UnityEngine;
 
 namespace Planning.Tasks
 {
-  public class WalkToChestTask : Task
+  [Serializable] public class WalkToChestTask : Task
   {
-    public WalkToChestTask(GoapAgent agent, Transform chest) : base(
-      new Func<Blackboard, bool> []
+    [SerializeField] private Transform chest;
+
+    protected override Func<Blackboard, bool>[] GetPreConditions()
+    {
+      return new Func<Blackboard, bool>[]
       {
         blackboard => blackboard.GetBool("DoorOpen")
-      },
-      new NavigateToOperation(agent, chest.position), 
-      new Action<Blackboard>[]
+      };
+    }
+
+    protected override IOperation GetOperation()
+    {
+      return new NavigateToOperation(chest.position);
+    }
+
+    protected override Action<Blackboard>[] GetEffects()
+    {
+      return new Action<Blackboard>[]
       {
         blackboard => blackboard.Set("Location", chest.position)
-      }
-    )
-    {
+      };
     }
   }
 }

@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 71903593}
   - component: {fileID: 71903592}
   - component: {fileID: 71903591}
+  - component: {fileID: 71903595}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -308,6 +309,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &71903595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 71903590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e569eaafb15143789ea6fd944f5d0bdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskPool:
+    tasks:
+    - {fileID: 1729506800}
+    - {fileID: 1726515191}
+    - {fileID: 1742125798}
+    - {fileID: 1656983850}
+    - {fileID: 1127119636}
+  buttonTransforms:
+  - {fileID: 1159330104}
+  - {fileID: 44130019}
+  treasureChest: {fileID: 231307240}
 --- !u!1 &74590883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,6 +1446,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1127119636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c549609ca82041689ac5e3955e946b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chest: {fileID: 231307240}
 --- !u!1 &1159330100
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,7 +1471,6 @@ GameObject:
   - component: {fileID: 1159330103}
   - component: {fileID: 1159330102}
   - component: {fileID: 1159330101}
-  - component: {fileID: 1159330105}
   m_Layer: 0
   m_Name: PressurePlate1
   m_TagString: Untagged
@@ -1516,23 +1552,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1159330105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1159330100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e569eaafb15143789ea6fd944f5d0bdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  taskPool: {fileID: 11400000, guid: ec3586f413d722e40ae9b1144e6e19ab, type: 2}
-  buttonTransforms:
-  - {fileID: 1159330104}
-  - {fileID: 44130019}
-  treasureChest: {fileID: 231307240}
 --- !u!1 &1329332474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1657,6 +1676,47 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558353033}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1656983850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8ff8e8eadb44ea865368b4322daf5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 1159330104}
+--- !u!114 &1726515191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71e7306a5e21498f8c174b3dccf92031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 1159330104}
+  - {fileID: 44130019}
+--- !u!114 &1729506800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eef9cfb879e4a5db7c6785b758fb6b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  treasureChest: {fileID: 231307240}
 --- !u!1 &1731047795
 GameObject:
   m_ObjectHideFlags: 0
@@ -1687,6 +1747,19 @@ Transform:
   m_Father: {fileID: 964180513}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1742125798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe8ff8e8eadb44ea865368b4322daf5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 44130019}
 --- !u!1 &2121255795
 GameObject:
   m_ObjectHideFlags: 0
