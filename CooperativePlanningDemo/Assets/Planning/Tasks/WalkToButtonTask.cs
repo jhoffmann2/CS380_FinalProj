@@ -25,10 +25,5 @@ namespace Planning.Tasks
         blackboard => blackboard.Set("Location", button.position)
       };
     }
-
-    protected override int GetMaxUses()
-    {
-      return 1;
-    }
   }
 }

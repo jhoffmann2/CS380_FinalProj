@@ -1,12 +1,13 @@
 ﻿using System;
 using Planning.Operations;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Planning.Tasks
 {
   [Serializable] public class CollectGoalTask : Task
   {
-    [SerializeField] private Transform treasureChest = null;
+    [SerializeField] private Transform goal = null;
 
     protected override Func<Blackboard, bool>[] GetPreConditions()
     {
@@ -18,7 +19,7 @@ namespace Planning.Tasks
       
       return new Func<Blackboard, bool>[]
       {
-        blackboard => AtLocation(blackboard, treasureChest.position)
+        blackboard => AtLocation(blackboard, goal.position)
       };
     }
 

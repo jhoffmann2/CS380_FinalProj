@@ -19,17 +19,12 @@ namespace Planning
     private Action<Blackboard>[] effects => 
       effectsCache ?? (effectsCache = GetEffects());
 
-    private int maxUses => GetMaxUses();
+    [SerializeField, Tooltip("Set to zero for infinite uses")] private int maxUses = 0;
     private int currentUses = 0;
 
     protected abstract Func<Blackboard, bool>[] GetPreConditions();
     protected abstract IOperation GetOperation();
     protected abstract Action<Blackboard>[] GetEffects();
-
-    protected virtual int GetMaxUses()
-    {
-      return 0;
-    }
 
     public bool CanUse()
     {

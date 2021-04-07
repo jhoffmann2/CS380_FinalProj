@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Planning
 {
   [Serializable] 
-  public class TaskPool
+  public class TaskPool : MonoBehaviour
   {
     [SerializeField] private Task[] tasks;
 
