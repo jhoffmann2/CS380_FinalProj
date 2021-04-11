@@ -37,5 +37,11 @@ namespace Planning.Tasks
         blackboard => blackboard.SetBool("DoorOpen", true)
       };
     }
+    
+    private const string taskName = "Wait For Door";
+    protected override string GetTaskName()
+    {
+      return taskName;
+    }
   }
 }

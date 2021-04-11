@@ -25,5 +25,11 @@ namespace Planning.Tasks
         blackboard => blackboard.Set("Location", button.position)
       };
     }
+    
+    private const string taskName = "Walk To Button";
+    protected override string GetTaskName()
+    {
+      return taskName;
+    }
   }
 }

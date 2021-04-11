@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 namespace Planning
@@ -13,18 +12,22 @@ namespace Planning
 
     private Func<Blackboard,bool>[] preconditionsCache;
     public Func<Blackboard, bool>[] preconditions => 
-      preconditionsCache ?? (preconditionsCache = GetPreConditions());
+        preconditionsCache ?? (preconditionsCache = GetPreConditions());
+
+    public string TaskName =>
+      GetTaskName();
 
     private Action<Blackboard>[] effectsCache;
     private Action<Blackboard>[] effects => 
       effectsCache ?? (effectsCache = GetEffects());
-
+  
     [SerializeField, Tooltip("Set to zero for infinite uses")] private int maxUses = 0;
     private int currentUses = 0;
 
     protected abstract Func<Blackboard, bool>[] GetPreConditions();
     protected abstract IOperation GetOperation();
     protected abstract Action<Blackboard>[] GetEffects();
+    protected abstract string GetTaskName();
 
     public bool CanUse()
     {

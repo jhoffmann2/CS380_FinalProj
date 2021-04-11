@@ -8,7 +8,6 @@ namespace Planning.Tasks
   [Serializable] public class CollectGoalTask : Task
   {
     [SerializeField] private Transform goal = null;
-
     protected override Func<Blackboard, bool>[] GetPreConditions()
     {
       bool AtLocation(Blackboard blackboard, Vector3 pos)
@@ -27,13 +26,19 @@ namespace Planning.Tasks
     {
       return new CollectGoalOperation();
     }
-
+    
     protected override Action<Blackboard>[] GetEffects()
     {
       return new Action<Blackboard>[]
       {
         blackboard => blackboard.SetBool("GoalCollected", true)
       };
+    }
+
+    private const string taskName = "Collect Goal";
+    protected override string GetTaskName()
+    {
+      return taskName;
     }
   }
 }

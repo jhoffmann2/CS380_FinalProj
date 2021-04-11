@@ -29,5 +29,11 @@ namespace Planning.Tasks
         blackboard => blackboard.Set("Location", goal.position)
       };
     }
+    
+    private const string taskName = "Walk To Goal";
+    protected override string GetTaskName()
+    {
+      return taskName;
+    }
   }
 }
